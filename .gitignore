@@ -35,3 +35,6 @@ build/
 .env
 .env.*
 *.jar
+
+deploy.zip
+deploy/
