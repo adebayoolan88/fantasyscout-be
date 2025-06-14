@@ -5,18 +5,13 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo Installing Maven dependencies...
-      - ./mvnw clean install -DskipTests
-
+      - echo Installing Maven...
+      - mvn clean install -DskipTests
   build:
     commands:
-      - echo Packaging Spring Boot application...
-      - ./mvnw package -DskipTests
-      - echo Preparing deployment directory...
-      - mkdir -p deploy
-      - cp target/*.jar deploy/
-      - cp start.sh stop.sh deploy/
-
+      - echo Packaging Spring Boot app...
+      - mvn package -DskipTests
 artifacts:
   files:
-    - deploy/**/*
+    - target/FantasyScout.jar
+    - Procfile
