@@ -15,7 +15,7 @@ phases:
       - echo Preparing deployment directory...
       - mkdir -p deploy
       - cp target/*.jar deploy/
-      - cp deploy/start.sh deploy/stop.sh deploy/
+      - cp start.sh stop.sh deploy/
 
 artifacts:
   files:
