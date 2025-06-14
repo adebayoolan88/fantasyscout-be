@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo Installing Maven dependencies...
+      - ./mvnw clean install -DskipTests
+
+  build:
+    commands:
+      - echo Packaging Spring Boot application...
+      - ./mvnw package -DskipTests
+
+artifacts:
+  files:
+    - target/*.jar
