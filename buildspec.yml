@@ -2,9 +2,21 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto21
     commands:
+      - echo Updating apt packages...
+      - apt-get update
+      - echo Installing Java 21...
+      - apt-get install -y wget gnupg software-properties-common
+      - wget -qO - https://adoptium.jfrog.io/artifactory/api/gpg/key/public | gpg --dearmor > /etc/apt/trusted.gpg.d/adoptium.gpg
+      - add-apt-repository --yes https://adoptium.jfrog.io/artifactory/deb
+      - apt-get update
+      - apt-get install -y temurin-21-jdk
+      - java -version
+
+      - echo Installing Maven...
+      - apt-get install -y maven
+      - mvn -version
+
       - echo Installing Maven dependencies...
       - ./mvnw clean install -DskipTests
 
